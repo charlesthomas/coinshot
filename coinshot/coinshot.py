@@ -6,9 +6,15 @@ import urllib
 import simplejson as json
 
 conf = {
-    'base_url'  : 'api.pushover.net',
-    'push_path' : '/1/messages.json',
+    'base_url' : 'api.pushover.net',
+    'push_url' : '/1/messages.json',
 }
+
+class CoinshotException( Exception ):
+    def __init__( self, message, details = None ):
+        Exception.__init__( self, message )
+
+        self.details = details
 
 class Coinshot( object ):
     def __init__( self, app_key, user_key = None ):
@@ -18,20 +24,21 @@ class Coinshot( object ):
             self.user_key = user_key
         return None
 
-    def push( self, msg, title = None, device = None, user_key = None ):
+    def push(
+        self, message, title = None, user_key = None, device = None,
+        url = None, url_title = None, priority = None, timestamp = None
+    ):
 
         if user_key == None:
             try:
                 user_key = self.user_key
             except AttributeError:
-                self.err = 'No user_key provided!'
-                return 0
+                raise CoinshotException( 'No user_key provided!' )
 
         payload = {
             'token'   : self.app_key,
             'user'    : user_key,
-            'message' : msg,
-            'title'   : '',
+            'message' : message,
         }
 
         if title:
@@ -39,6 +46,17 @@ class Coinshot( object ):
 
         if device:
             payload['device'] = device
+
+        if url:
+            payload['url'] = url
+            if url_title:
+                payload['url_title'] = url_title
+
+        if priority:
+            payload['priority'] = priority
+
+        if timestamp:
+            payload['timestamp'] = timestamp
 
         json_payload = json.dumps( payload )
 
@@ -48,7 +66,7 @@ class Coinshot( object ):
 
         connection.request(
             'POST',
-            self.push_path,
+            self.push_url,
             json_payload,
             { "Content-type": "application/json" }
         )
@@ -56,31 +74,23 @@ class Coinshot( object ):
         try:
             response = connection.getresponse()
         except Exception as e:
-            self.err = e
-            return 0
+            raise CoinshotException( e )
 
         json_result = response.read()
         result = json.loads( json_result )
 
         if response.status != 200:
-            self.err = response.reason
-            self.err = self.err + '\n%s' % json_result
-            if response.status == 400:
-                self.err = self.err + '\n%s' % json_payload
-            return 0
+            result['http status'] = response.status
+            result['http reason'] = response.reason
+            raise CoinshotException( {
+                'message' : 'Bad Request',
+                'details' : result,
+            } )
 
-
-        if result['status']:
-            return 1
+        if result['status'] == 1:
+            return
         else:
-            self.err = result
-            return 0
-
-    def fetch_err( self ):
-        try:
-            msg = self.err
-        except AttributeError:
-            return 0
-
-        del self.err
-        return msg
+            raise CoinshotException( {
+                'message' : 'Bad Status',
+                'details'  : result,
+            } )
