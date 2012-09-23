@@ -94,3 +94,51 @@ class Coinshot( object ):
                 'message' : 'Bad Status',
                 'details'  : result,
             } )
+
+if __name__ == '__main__':
+    from optparse import OptionParser
+
+    usage = "usage: %prog [options] user_key message"
+
+    parser = OptionParser( usage = usage )
+    parser.add_option(
+        '--app-key',
+        help = "To use a custom app key, pass it here. Defaults to coinshot's app key.",
+        default = 'NGVmD0DWi9vE3KftytbHM0RUwKIbQI',
+    )
+    parser.add_option( '--title', help = 'Pushover Notification Title' )
+    parser.add_option( '--device', )
+    parser.add_option( '--timestamp', )
+    parser.add_option( '--priority', action = 'store_true', )
+    parser.add_option( '--url', )
+    parser.add_option(
+        '--url-title', dest = 'url_title', help = 'Link text. Ignored without URL',
+    )
+
+    ( opts, args ) = parser.parse_args()
+
+    if len( args ) != 2:
+        raise CoinshotException(
+            'user_key and message arguments are both required!'
+        )
+
+    coinshot_object = Coinshot( app_key = opts.app_key, user_key = args[0] )
+
+    payload = { 'message' : args[1] }
+
+    if opts.title:     payload['title'    ] = opts.title
+    if opts.device:    payload['device'   ] = opts.device
+    if opts.url:       payload['url'      ] = opts.url
+    if opts.url_title: payload['url_title'] = opts.url_title
+    if opts.priority:  payload['priority' ] = 1
+    if opts.timestamp: payload['timestamp'] = opts.timestamp
+
+    try:
+        coinshot_object.push( **payload )
+    except CoinshotException as e:
+        print e[0]['message']
+
+        if e[0]['details']:
+            print 'Details:'
+            for k, v in e[0]['details'].items():
+                print "\t%s => %s" % ( k, v )
