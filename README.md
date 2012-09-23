@@ -22,7 +22,6 @@ Notes:
 To Do:
 
     * Add documentation
-    * Make the module able to run stand-alone
 
 Requirements:
 
