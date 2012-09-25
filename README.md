@@ -19,10 +19,6 @@ Notes:
 
     * url_title can be passed without url, but will be ignored
 
-To Do:
-
-    * Add documentation
-
 Requirements:
 
     See pip_requirements.txt

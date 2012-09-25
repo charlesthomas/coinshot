@@ -2,7 +2,6 @@
 # encode: utf-8
 
 import httplib
-import urllib
 import simplejson as json
 
 conf = {
