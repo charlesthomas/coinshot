@@ -2,7 +2,8 @@
 # encode: utf-8
 
 import httplib
-import simplejson as json
+from simplejson import loads
+from urllib import urlencode
 
 conf = {
     'base_url' : 'api.pushover.net',
@@ -57,8 +58,6 @@ class Coinshot( object ):
         if timestamp:
             payload['timestamp'] = timestamp
 
-        json_payload = json.dumps( payload )
-
         connection = httplib.HTTPSConnection(
             self.base_url
         )
@@ -66,8 +65,8 @@ class Coinshot( object ):
         connection.request(
             'POST',
             self.push_url,
-            json_payload,
-            { "Content-type": "application/json" }
+            urlencode( payload ),
+            { "Content-type": "application/x-www-form-urlencoded" }
         )
 
         try:
@@ -76,7 +75,7 @@ class Coinshot( object ):
             raise CoinshotException( e )
 
         json_result = response.read()
-        result = json.loads( json_result )
+        result = loads( json_result )
 
         if response.status != 200:
             result['http status'] = response.status
