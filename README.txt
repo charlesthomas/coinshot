@@ -5,9 +5,11 @@ A simple Python module for Pushover.net
 
 Example:
 
-    import coinshot.coinshot as coinshot
+    See example.py for full example
 
-    coinshot_object = coinshot.Coinshot( application_key[, user_key] )
+    from coinshot import Coinshot, CoinshotException
+
+    coinshot_object = Coinshot( application_key[, user_key] )
 
     coinshot_object.push( message[, title, user_key, device, url, url_title, priority, timestamp ] )
 
