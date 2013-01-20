@@ -3,8 +3,8 @@ from distutils.core import setup
 from os.path import dirname, join
 
 NAME = 'coinshot'
-VERSION = open( join( dirname( __file__ ), 'VERSION' ) ).read()
 DESCRIPTION = 'simple python module for pushover.net'
+VERSION = open( join( dirname( __file__ ), 'VERSION' ) ).read()
 
 setup(
     name = NAME,
@@ -12,5 +12,5 @@ setup(
     description = DESCRIPTION,
     author = 'Charles Thomas',
     author_email = 'ch@rlesthom.as',
-    url = 'http://bitbucket.org/charlesthomas/%s' % NAME,
+    url = 'http://code.cha.rlesthom.as/%s' % NAME,
 )
