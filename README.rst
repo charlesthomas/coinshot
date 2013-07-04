@@ -17,7 +17,6 @@ See example.py for full example::
 Notes
 =====
 * ``user_key`` is required either during object initialization or when calling push. If a ``user_key`` is provided for both, the one passed to push takes precedent.
-
 * ``url_title`` can be passed without ``url``, but will be ignored
 
 What's the deal with the name?
