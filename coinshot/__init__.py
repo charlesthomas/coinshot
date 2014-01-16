@@ -1,2 +1,2 @@
 #!/usr/bin/env python
-from coinshot import coinshot
+from coinshot import Coinshot
