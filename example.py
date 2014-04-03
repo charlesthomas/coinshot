@@ -9,7 +9,7 @@ args = {
     'message'   : 'This is a test push to pushover with coinshot!',
     'title'     : 'Hello world!',
     'device'    : None,
-    'url'       : 'http://code.cha.rlesthom.as/coinshot',
+    'url'       : 'https://github.com/charlesthomas/coinshot',
     'url_title' : 'Coinshot project page',
     'priority'  : 1,
     'timestamp' : None,

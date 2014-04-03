@@ -1,2 +1,2 @@
 #!/usr/bin/env python
-from coinshot import Coinshot
+from coinshot import Coinshot, CoinshotException
