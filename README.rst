@@ -14,16 +14,16 @@ See `example.py`_ for full example::
 
     coinshot_object.push(message[, title, user_key, device, url, url_title, priority, timestamp])
 
-shoot.py
-========
+shoot
+=====
 If all you're looking for is an app to send pushover notifications through (not
-a library for doing it programmatically, look at `bin/shoot.py`_.
+a library for doing it programmatically, look at `bin/shoot`_.
 
 Usage
 -----
 ::
 
-    Usage: shoot.py [options] message
+    Usage: shoot [options] message
 
     Options:
       -h, --help            show this help message and exit
@@ -55,5 +55,5 @@ nearby metals.
 
 .. _`Pushover.net`: http://pushover.net
 .. _`example.py`: https://github.com/charlesthomas/coinshot/blob/master/example.py
-.. _`bin/shoot.py`: https://github.com/charlesthomas/coinshot/blob/master/bin/shoot.py
+.. _`bin/shoot`: https://github.com/charlesthomas/coinshot/blob/master/bin/shoot
 .. _`todo.md`: https://github.com/charlesthomas/coinshot/blob/master/todo.md

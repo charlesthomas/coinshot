@@ -18,7 +18,7 @@ setup(
     description=DESCRIPTION,
     long_description=LONG_DESC,
     install_requires=["simplejson >= 3.3.0"],
-    scripts=['bin/shoot.py'],
+    scripts=['bin/shoot'],
     classifiers=['Development Status :: 5 - Production/Stable',
                  'Intended Audience :: Developers',
                  'Intended Audience :: End Users/Desktop',
