@@ -44,6 +44,8 @@ class Coinshot(object):
                 payload['url_title'] = url_title
 
         if priority:
+            if priority not in rage(-2, 3):
+                raise CoinshotException("Priority must be between -2 and 2")
             payload['priority'] = priority
 
         if timestamp:

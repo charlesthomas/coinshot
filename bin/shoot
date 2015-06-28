@@ -10,9 +10,13 @@ parser.add_option('--application-key', '-a', dest='app_key',
                   help="Application key provided by pushover.net")
 parser.add_option('--user-key', '-u', dest='user_key',
                   help="User key provided by pushover.net")
-# TODO add the rest of the push options as command options
-
+parser.add_option('--url', dest='url',)
+parser.add_option('--url-title', dest='url_title')
+parser.add_option('--device', dest='device')
+parser.add_option('--priority', dest='priority')
+parser.add_option('--timestamp', dest='timestamp')
 (opts, args) = parser.parse_args()
+
 # turn all non-option args into the title
 title = ' '.join(args)
 

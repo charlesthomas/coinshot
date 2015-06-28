@@ -1,3 +1,7 @@
+3.0.1
+=====
+* Added the rest of the Coinshot options to ``shoot``
+
 3.0.0
 =====
 
