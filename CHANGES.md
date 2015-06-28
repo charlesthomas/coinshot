@@ -1,3 +1,10 @@
+3.0.2
+=====
+
+Bug Fixes
+---------
+* derp, *actually* adding the rest of the Coishot options to ``shoot``
+
 3.0.1
 =====
 * Added the rest of the Coinshot options to ``shoot``

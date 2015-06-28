@@ -35,4 +35,6 @@ if opts.user_key is None:
         raise Exception("exception type (%s)\n%s" % (type(e), e))
 
 coinshot = Coinshot(opts.app_key, opts.user_key)
-coinshot.push(message, title=title)
+coinshot.push(message, title=title, url=opts.url, url_title=opts.url_title,
+              device=opts.device, priority=opts.priority,
+              timestamp=opts.timestamp)
