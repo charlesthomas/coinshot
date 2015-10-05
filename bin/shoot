@@ -15,13 +15,14 @@ parser.add_option('--url-title', dest='url_title')
 parser.add_option('--device', dest='device')
 parser.add_option('--priority', dest='priority')
 parser.add_option('--timestamp', dest='timestamp')
+parser.add_option('--title', '-t', dest='title')
 (opts, args) = parser.parse_args()
 
-# turn all non-option args into the title
-title = ' '.join(args)
-
-message = '\n'.join(sys.stdin)
-if message == '':
+# turn all non-option args into the message
+message = ' '.join(args)
+if not message:
+    message = '\n'.join(sys.stdin)
+if not message:
     raise CoinshotException("message cannot be blank")
 
 if opts.app_key is None:
@@ -35,6 +36,6 @@ if opts.user_key is None:
         raise Exception("exception type (%s)\n%s" % (type(e), e))
 
 coinshot = Coinshot(opts.app_key, opts.user_key)
-coinshot.push(message, title=title, url=opts.url, url_title=opts.url_title,
+coinshot.push(message, title=opts.title, url=opts.url, url_title=opts.url_title,
               device=opts.device, priority=opts.priority,
               timestamp=opts.timestamp)

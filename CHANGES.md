@@ -1,3 +1,15 @@
+3.1.0
+=====
+* ``shoot -t`` is back (also ``shoot --title``)
+
+* ``shoot`` **no longer requires** stdin
+    * now that -t is back, anything passed in as an argument w/o a flag is
+      considered to be the **message**
+    * ``shoot`` requires *either* text passed as args w/o flags as the message,
+      *or* text through stdin as the message
+    * *neither* will throw ``CoinshotException``
+    * *both* will **ignore stdin**
+
 3.0.2
 =====
 
