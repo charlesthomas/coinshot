@@ -14,6 +14,7 @@ parser.add_option('--url', dest='url',)
 parser.add_option('--url-title', dest='url_title')
 parser.add_option('--device', dest='device')
 parser.add_option('--priority', dest='priority')
+parser.add_option('--sound', '-s', dest='sound')
 parser.add_option('--timestamp', dest='timestamp')
 parser.add_option('--title', '-t', dest='title')
 (opts, args) = parser.parse_args()
@@ -38,4 +39,4 @@ if opts.user_key is None:
 coinshot = Coinshot(opts.app_key, opts.user_key)
 coinshot.push(message, title=opts.title, url=opts.url, url_title=opts.url_title,
               device=opts.device, priority=opts.priority,
-              timestamp=opts.timestamp)
+              timestamp=opts.timestamp, sound=opts.sound)

@@ -14,13 +14,36 @@ class CoinshotException(Exception):
         self.details = details
 
 class Coinshot(object):
+    VALID_SOUNDS = ['pushover',
+                    'bike',
+                    'bugle',
+                    'cashregister',
+                    'classical',
+                    'cosmic',
+                    'falling',
+                    'gamelan',
+                    'incoming',
+                    'intermission',
+                    'magic',
+                    'mechanical',
+                    'pianobar',
+                    'siren',
+                    'spacealarm',
+                    'tugboat',
+                    'alien',
+                    'climb',
+                    'persistent',
+                    'echo',
+                    'updown',
+                    'none']
+
     def __init__(self, app_key, user_key=None):
         self.__dict__ = conf
         self.app_key  = app_key
         if user_key:
             self.user_key = user_key
 
-    def push(self, message, title=None, user_key=None, device=None,
+    def push(self, message, title=None, user_key=None, device=None, sound=None,
              url=None, url_title=None, priority=None, timestamp=None):
         if user_key is None:
             try:
@@ -38,13 +61,17 @@ class Coinshot(object):
         if device:
             payload['device'] = device
 
+        if sound:
+            assert sound in self.VALID_SOUNDS
+            payload['sound'] = sound
+
         if url:
             payload['url'] = url
             if url_title:
                 payload['url_title'] = url_title
 
         if priority:
-            if priority not in rage(-2, 3):
+            if priority not in range(-2, 3):
                 raise CoinshotException("Priority must be between -2 and 2")
             payload['priority'] = priority
 

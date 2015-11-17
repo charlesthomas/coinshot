@@ -1,3 +1,14 @@
+3.1.1
+=====
+
+Bug Fix
+-------
+* derp there's an n in ``range`` -- priority works now
+
+Improvement
+-----------
+* added sound option to lib and to bin/shoot
+
 3.1.0
 =====
 * ``shoot -t`` is back (also ``shoot --title``)
