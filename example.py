@@ -2,7 +2,7 @@
 from __future__ import print_function
 
 from sys import argv
-from coinshot import Coinshot, CoinshotException
+from coinshot.coinshot import Coinshot, CoinshotException
 
 coinshot_object = Coinshot(app_key='NGVmD0DWi9vE3KftytbHM0RUwKIbQI',
                            user_key=None)

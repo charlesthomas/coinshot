@@ -3,7 +3,7 @@ from optparse import OptionParser
 from os import path
 import sys
 
-from coinshot import Coinshot, CoinshotException
+from coinshot.coinshot import Coinshot, CoinshotException
 
 parser = OptionParser(usage="%prog [options] message")
 parser.add_option('--application-key', '-a', dest='app_key',
