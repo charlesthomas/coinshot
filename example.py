@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+from __future__ import print_function
+
 from sys import argv
 from coinshot import Coinshot, CoinshotException
 
@@ -19,9 +21,9 @@ try:
     coinshot_object.push(**args)
 
 except CoinshotException as e:
-    print e[0]['message']
+    print(e[0]['message'])
 
     if e[0].get('details'):
-        print "Details:"
+        print("Details:")
         for k, v in e[0]['details'].items():
-            print "\t%s => %s" % (k, v)
+            print("\t%s => %s" % (k, v))
