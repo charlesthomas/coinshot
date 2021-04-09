@@ -5,7 +5,7 @@ NAME = 'coinshot'
 DESCRIPTION = 'simple python module for pushover.net'
 VERSION = open('VERSION').read().strip()
 LONG_DESC = open('README.rst').read()
-LICENSE = open('LICENSE').read()
+LICENSE = "MIT License"
 
 setup(
     name=NAME,
@@ -17,6 +17,7 @@ setup(
     license=LICENSE,
     description=DESCRIPTION,
     long_description=LONG_DESC,
+    long_description_content_type='text/x-rst',
     install_requires=["simplejson >= 3.3.0"],
     scripts=['bin/shoot'],
     classifiers=['Development Status :: 5 - Production/Stable',
@@ -26,6 +27,7 @@ setup(
                  'Operating System :: MacOS :: MacOS X',
                  'Operating System :: POSIX :: Linux',
                  'Programming Language :: Python :: 2.7',
+                 'Programming Language :: Python :: 3',
                  'Topic :: Communications',
                  'Topic :: Software Development :: Libraries :: Python Modules']
 )

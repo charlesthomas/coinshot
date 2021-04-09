@@ -1,3 +1,9 @@
+3.2.1
+=====
+Improvement
+-----------
+* should work with python3 now
+
 3.1.1
 =====
 
