@@ -1,7 +1,15 @@
 #!/usr/bin/env python
-import httplib
+from __future__ import print_function
+try:
+    import httplib
+except ModuleNotFoundError:
+    import http.client as httplib
+
 from simplejson import loads
-from urllib import urlencode
+try:
+    from urllib import urlencode
+except ImportError:
+    from urllib.parse import urlencode
 
 conf = {
     'base_url' : 'api.pushover.net',
